@@ -1,0 +1,116 @@
+.header,#headerChild{
+    display: flex;
+}
+#headerChild,#navbarIcon{
+    display: flex;
+    position:relative;
+    left: 1%;
+    width: 60%;
+}
+#navbarIcon{
+    transform: rotate(90deg);
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 5%;
+    color: white;
+}
+#welcome{
+    margin-top: 3%;
+    color:rgb(245, 248, 250);
+    text-shadow:black 2px 2px;
+    margin-left: 4%;
+}
+#Search>form{
+    display: flex;
+    position:absolute;
+    right: 2%;
+    padding: 2px;
+    top: 2%;
+}
+[type="search"]{
+    margin-right: 2%;
+}
+
+#libraryName{
+    color:gold;
+    text-shadow: white 1px 1px;
+    text-align: center;
+}
+
+.boxes,.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.box{
+    height: 20vw;
+    width: 20vw;
+    margin:3vw 15vw;
+    background-color:rgb(135, 143, 143);
+    border: 2px solid silver;
+    border-radius: 15%;
+}
+i{  
+    color: whitesmoke;
+    height: 7vw;
+    width: 7vw;
+}
+input{
+    border-radius: 5px;
+    border: 2px solid black;
+    height: 3%;
+    padding: 3px;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+[type="submit"]{
+    color: white;
+    border: 0px solid white;
+}
+.header,[type="submit"]{
+    background-color:rgb(173, 179, 179);
+}
+#body{
+    position: relative;
+    z-index: 1;
+    background-color: darkgray;
+}
+#SideBar a{
+    text-decoration: none;
+    color:rgb(210, 180, 140);
+}
+#SideBar a:hover{
+    color: black;
+    padding: 4px;
+    cursor:pointer;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#SideBar{
+    background-color: rgb(122, 115, 115);
+    color: white;
+    font-size: large;
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    font-family:serif;
+    height: 100%;
+    padding-left: 2%;
+    width: 35%;
+    z-index: 2;
+    transition: 1.5s;
+    overflow-x: hidden;
+}
+
+#Clock{
+    position: absolute;
+    bottom: 2%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:large;
+}

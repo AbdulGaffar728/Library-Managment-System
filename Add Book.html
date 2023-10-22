@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="CSS/Sign-Up.css">
+    <link rel="stylesheet" href="CSS/Login.css">
+</head>
+<body>
+    <div class="body">
+      <div class="formBody">
+          <h2>Add New Book</h2>
+          <form action="JavaScript:void(0)" method="post" onSubmit="AddingBook()">
+             <input type="text" name="bookName" id="newBookName" placeholder="Book Name" required><br/><br/>  
+             <input type="number" name="bookId" id="bookId" placeholder="Book Id" required ><br/><br/>
+             <input type="text" name="author" id="authorName" placeholder="Author Name" required><br/><br/>
+             <input type="number" name="bookPrice" id="bookPrice" placeholder="Book Price" required><br/><br/>
+             <input type="text" name="category" id="bookCategory" placeholder="Category" required><br/><br/>
+             <input type="submit" value="Add" id="Submit">
+          </form>
+          <h5><a href="Admin Site.html">Go To Home Page</a></h5>
+      </div>
+    </div>
+    <script src="JS/Add Book.js"></script>
+</body>
+</html>

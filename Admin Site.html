@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Site</title>
+   <link rel="stylesheet" href="Icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="CSS/Admin Site.css">
+    <link rel="stylesheet" href="bootstrap-icons.css">
+</head>
+<body>
+    <div id="SideBar" >
+     <div>
+         <h1 style="font-family:Sans-serif" onClick="closeSideBar()">X</h1>
+     </div>
+     <div>
+        <a href="JavaScript:void(0)">Books</a><br/><br/>
+        <a href="JavaScript:void(0)">Requests</a> <br/><br/>
+        <a href="JavaScript:void(0)">Issued Books</a><br/><br/>
+        <a href="JavaScript:void(0)">Add Admin</a><br/><br/>
+     </div>
+     <div id="Clock">
+        <div id="Limit">
+            <div id="Time">
+        <span id="Hour">00</span>
+        <span>:</span>
+        <span id="Mins">00</span>
+        <span>:</span>
+        <span id="Secs">00</span>
+        <span id="AM">AM</span>
+            </div>
+        <div id="date">
+            <span id="Date">June 19,2023 </span>
+            <span id="day">Sunday</span>
+         </div>
+        </div>
+    </div>
+    </div>
+    
+  <div id="body">
+    <div class="header">
+       <div id="headerChild" >
+          <h1 onclick="openSideBar()" id="navbarIcon">|||</h1>
+          <h3 id="welcome">
+             Welcome Dear Admin
+          </h3>
+       </div>
+        <div id="Search">
+           <form action="JavaScript:void(0)" method="get">
+               <input type="search" name="search" id="search" placeholder="search">
+               <button type="submit"><i class="bi-search"></i></button>
+           </form>
+        </div>
+    </div>
+    <h1 id="libraryName">SKY LIBRARY MANAGMENT SYSTEM</h1>
+
+    <div id="layout">
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-info-circle"></i><br/><br/>All Books <br/> Detail</a></div>
+            <div class="box"><a href="Add Book.html"><i class="bi-plus-circle"></i><br/><br/>Add New <br/> Book</a></div>
+        </div>
+        
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-book"></i><br/><br/>Issued Books</a></div>
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-file-arrow-up"></i><br/><br/>Return Book</a></div>
+        </div>
+
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-trash"></i><br/><br/>Delete Book</a></div>
+        </div>
+    </div>
+</div>
+    <script src="JS/Admin Site.js"></script>
+</body>
+</html>

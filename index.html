@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="CSS/Sign-Up.css">
+    <link rel="stylesheet" href="CSS/Login.css">
+</head>
+<body>
+    <div class="body">
+        <div class="formBody">
+            <h2>Welcome to AG <br/>Library</h2>
+        <h1>
+            Login
+        </h1>
+      <form action="JavaScript:void(0)" onSubmit="loggingIn()" method="post">
+             <input type="email" name="userEmail" id="userEmail" placeholder="Email" required><br/><br/>
+             <input type="text" name="userName" id="userName" placeholder="Name(Optional)"><br/><br/>
+             <input type="password" name="password" id="password" required placeholder="Password">
+             <br/><br/>
+          <span class="submit">   
+              <input type="submit" id="Submit" value="Login">
+          </span>
+      </form>
+      <br/><br/>
+      <div id="Account">
+          <a href="Sign-Up.html">Did't have an account?</a>
+      </div>
+    </div>
+</div>
+<script src="JS/index.js"></script>
+</body>
+</html>

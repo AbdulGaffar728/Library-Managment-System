@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Site</title>
+   <link rel="stylesheet" href="Icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="CSS/Admin Site.css">
+    <link rel="stylesheet" href="bootstrap-icons.css">
+</head>
+<body>
+    <div id="SideBar" >
+     <div>
+         <h1 style="font-family:Sans-serif" onClick="closeSideBar()">X</h1>
+     </div>
+     <div>
+        <a href="JavaScript:void(0)">All Books</a><br/><br/>
+        <a href="JavaScript:void(0)">Issue Books</a> <br/><br/>
+        <a href="https://wa.me//923034895728">Contact Us</a><br/><br/>
+        <a href="JavaScript:void(0)" onClick="LogOut()">Logout</a><br/><br/>
+     </div>
+     <div id="Clock">
+        <div id="Limit">
+            <div id="Time">
+        <span id="Hour">00</span>
+        <span>:</span>
+        <span id="Mins">00</span>
+        <span>:</span>
+        <span id="Secs">00</span>
+        <span id="AM">AM</span>
+            </div>
+        <div id="date">
+            <span id="Date">June 19,2023 </span>
+            <span id="day">Sunday</span>
+         </div>
+        </div>
+    </div>
+    </div>
+    
+  <div id="body">
+    <div class="header">
+       <div id="headerChild" >
+          <h1 onclick="openSideBar()" id="navbarIcon">|||</h1>
+          <h3 id="welcome">
+             Welcome Dear User
+          </h3>
+       </div>
+        <div id="Search">
+           <form action="JavaScript:void(0)" method="get">
+               <input type="search" name="search" id="search" placeholder="search">
+               <button type="submit"><i class="bi-search"></i></button>
+           </form>
+        </div>
+    </div>
+    <h1 id="libraryName">SKY LIBRARY MANAGMENT SYSTEM</h1>
+
+    <div id="layout">
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-pencil-square"></i><br/><br/>Rules</a></div>
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-book"></i><br/><br/>Available Books</a></div>
+        </div>
+        
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-book"></i><br/><br/>Issue Book</a></div>
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-file-arrow-up"></i><br/><br/>Return Book</a></div>
+        </div>
+
+        <div class="boxes">
+            <div class="box"><a href="JavaScript:void(0)"><i class="bi-chat-right-text-fill"></i><br/><br/>Send Messege</a></div>
+        </div>
+    </div>
+</div>
+    <script src="JS/Admin Site.js"></script>
+     <script src="JS/UserSite.js"></script>
+</body>
+</html>
