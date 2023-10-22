@@ -42,6 +42,7 @@ input{
         font-size: 13px;
     }
     input{
+        margin: 50%;
         height: 20px;
         width: 170px;
     }
