@@ -12,9 +12,8 @@
     <div class="body">
       <div class="formBody">
           <h2>Delete Book</h2>
-          <form action="JavaScript:void(0)" method="post">
-             <input type="text" name="bookName" id="newBookName" placeholder="Book Name" required><br/><br/>  
-             <input type="text" name="bookId" id="bookId" placeholder="Book Id" required ><br/><br/>
+          <form action="JavaScript:void(0)" onSubmit="deletingBook()" method="post">
+             <input type="text" name="bookName" id="BookName" placeholder="Book Name" required><br/><br/>  
              <input type="text" name="category" id="bookCategory" placeholder="Category" required><br/><br/>
              <input type="text" name="author" id="authorName" placeholder="Author Name (Optional)" ><br/><br/>
              <input type="submit" value="Add" id="Submit">
