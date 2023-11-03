@@ -17,9 +17,9 @@ var Request={
 Requests.push(Request);
 localStorage.setItem("Requests",JSON.stringify(Requests))
 alert("Your request is submitted.");
-// window.location.href="User Site.html";
+window.location.href="User Site.html";
     }
     else{
-        alert("Plz enter maximum 7 days.")
+        alert("You can get book for maximum 7 days.")
     }
 }

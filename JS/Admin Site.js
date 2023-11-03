@@ -33,3 +33,11 @@ setInterval(TimeUpdater,1000);
         document.getElementById("day").innerHTML=DaysArray[DayNow]+"day";
         document.getElementById("Date").innerHTML=`${MonthsArray[MonthNow]}  ${DateNow},${YearNow}  `
     }
+    var checkingRequests=JSON.parse(localStorage.getItem("Requests"));
+    if(checkingRequests===null){
+        document.getElementById("Requests").innerText+="0"
+    }
+    else{
+        document.getElementById("Requests").innerText+=checkingRequests.length;
+    }
+    

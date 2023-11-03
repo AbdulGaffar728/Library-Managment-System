@@ -1,0 +1,13 @@
+body{
+    background-color: lightgray;
+}
+h1{
+    /* font-size: larger; */
+    text-align: center;
+}
+#rules{
+    font-size: large;
+    word-spacing: 0.09cm;
+    width: 700px;
+    font-family:  georgia;
+}

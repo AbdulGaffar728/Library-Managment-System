@@ -11,7 +11,7 @@ deletingBook=()=>{
             {
                 gettingBooksDetail.slice(i,1)
                 localStorage.setItem("BooksData",JSON.stringify(gettingBooksDetail));
-                alert("Book deleted successfully.")
+                alert(document.getElementById("BookName").value + "Book data deleted successfully.")
                 return;             
             } 
             else{
