@@ -1,11 +1,11 @@
 var allBooksDetail;
 AddingBook=()=>{
     bookDetail={
-        bookName:document.getElementById("newBookName").value,
-        bookId:document.getElementById("bookId").value,
-        authorName:document.getElementById("authorName").value,
-        bookPrice:document.getElementById("bookPrice").value,
-        bookCategory:document.getElementById("bookCategory").value
+        bookName:document.getElementById("newBookName").value.toLowerCase(),
+        bookId:document.getElementById("bookId").value.toLowerCase(),
+        authorName:document.getElementById("authorName").value.toLowerCase(),
+        bookPrice:document.getElementById("bookPrice").value.toLowerCase(),
+        bookCategory:document.getElementById("bookCategory").value.toLowerCase()
     }
     detailFromStorage=JSON.parse(localStorage.getItem("BooksData"))
     if(detailFromStorage===null){

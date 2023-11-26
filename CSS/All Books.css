@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 #container{
     background-color: darkcyan;
     width: 100%;
@@ -6,20 +10,39 @@
 h1{
     text-align: center;
     color:white;
-    margin-top: 1px;
-    padding-top: 3px;
+    padding-top: 13px;
+    padding-bottom: 10px;
     text-shadow: black 1px 1px;
 }
 table{
     width: 96%;
     margin: auto;
-    padding: 4px;
+    padding: 3px;
     text-align: center;  
+    border: 2px solid black;
+    
 }
 th{
+    padding: 3px;
     color: white;
     text-shadow:brown 0.5px 0.5px;
 }
 td{
+    padding: 3px;
+    color: rgb(14, 209, 243);
+}
+#goBack{
+    background-color: black;
+    padding: 10px;
+    height:max-content;
+    width: max-content;
+    margin:2% 46%;
+    border-radius: 5px;
+    border: 0.1px solid black;
+    box-shadow: 4px 4px rgb(0, 0, 0 ,0.2);
+
+}
+a{
+    text-decoration: none;
     color: white;
 }

@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .header,#headerChild{
     display: flex;
 }
@@ -9,16 +13,18 @@
 }
 #navbarIcon{
     transform: rotate(90deg);
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: 1%;
+    margin-bottom: 2%;
     width: 5%;
     color: white;
 }
 #welcome{
     margin-top: 3%;
     color:rgb(245, 248, 250);
-    text-shadow:black 2px 2px;
+    text-shadow:black 1px 1px;
     margin-left: 4%;
+    font-family:sans-serif;
 }
 #Search>form{
     display: flex;
@@ -33,6 +39,7 @@
 
 #libraryName{
     color:gold;
+    margin-top: 5px;
     text-shadow: white 1px 1px;
     text-align: center;
 }
@@ -47,7 +54,7 @@
     height: 20vw;
     width: 20vw;
     margin:3vw 15vw;
-    background-color:rgb(135, 143, 143);
+    background-color: rgb(32, 158, 158);
     border: 2px solid silver;
     border-radius: 15%;
 }
@@ -72,16 +79,16 @@ a{
     border: 0px solid white;
 }
 .header,[type="submit"]{
-    background-color:rgb(173, 179, 179);
+    background-color: rgb(37, 165, 165);
 }
 #body{
     position: relative;
     z-index: 1;
-    background-color: darkgray;
+    background-color: darkcyan;
 }
 #SideBar a{
     text-decoration: none;
-    color:rgb(210, 180, 140);
+    color:white;
 }
 #SideBar a:hover{
     color: black;
@@ -92,7 +99,7 @@ a{
 }
 
 #SideBar{
-    background-color: rgb(122, 115, 115);
+    background-color: rgb(22, 100, 100);
     color: white;
     font-size: large;
     position: fixed;
@@ -104,7 +111,7 @@ a{
     padding-left: 2%;
     width: 35%;
     z-index: 2;
-    transition: 1.5s;
+    transition:left 3s ease-out;
     overflow-x: hidden;
 }
 

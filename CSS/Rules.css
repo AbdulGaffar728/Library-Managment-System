@@ -1,13 +1,39 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
-    background-color: lightgray;
+    background-color: darkcyan;
 }
 h1{
-    /* font-size: larger; */
     text-align: center;
+    color: white;
+    text-shadow: 3px 3px rgb(0, 0, 0 ,0.2);
 }
 #rules{
-    font-size: large;
+    /* font-size: large; */
+    color: white;
     word-spacing: 0.09cm;
-    width: 700px;
-    font-family:  georgia;
+    line-height: 25px;
+    width: 95%;
+    font-family: georgia;
+}
+ol{
+    margin-left: 30px;
+}
+#goBack{
+    background-color: black;
+    padding: 10px;
+    height:max-content;
+    width: max-content;
+    margin:2% 46%;
+    border-radius: 5px;
+    border: 0.1px solid black;
+    box-shadow: 4px 4px rgb(0, 0, 0 ,0.2);
+
+}
+a{
+    color: white;
+    text-decoration: none;
 }

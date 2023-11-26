@@ -10,7 +10,7 @@ else{
  if(document.getElementById("numberOfDays").value<=7){
 var Request={
     userName:document.getElementById("userName").value,
-    userEmai:document.getElementById("userEmail").value,
+    userEmail:document.getElementById("userEmail").value,
     bookName:document.getElementById("bookName").value,
     numberOfDays:document.getElementById("numberOfDays").value
 }

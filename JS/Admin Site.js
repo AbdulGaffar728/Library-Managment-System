@@ -1,6 +1,6 @@
 openSideBar=()=>{
     document.getElementById("SideBar").style.display="block"
-    document.getElementById("SideBar").style.transition="1.5s";
+    document.getElementById("SideBar").style.transition="all ease 2s";
 }
 closeSideBar=()=>{
     document.getElementById("SideBar").style.display="none"

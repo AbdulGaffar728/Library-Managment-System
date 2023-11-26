@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .body{
     height: 100vh;
     width: 100vw;
@@ -24,11 +28,13 @@
     text-align: center;
 }
 #Submit{
+    width: 34%;
     color: rgb(168, 9, 83);
-    padding: 5px;
+    padding: 8px;
     background-color: rgb(231, 213, 213);
 }
 a{
+    font-size: 111%;
     text-decoration: none;
 }
 input{
@@ -46,13 +52,9 @@ input{
         height: 20px;
         width: 170px;
     }
-    #Submit{
-        height: min-content;
-        width: min-content;
-    }
-    a{
+    /* a{
         font-size: 20px;
-    }
+    } */
     .formBody{
         height: 480px;
         width: 300px;
@@ -67,13 +69,9 @@ input{
         height: 25px;
         width: 225px;
     }
-    #Submit{
-        height: min-content;
-        width: min-content;
-    }
-    a{
+    /* a{
         font-size: 24px;
-    }
+    } */
     .formBody{
         height: 350px;
         width: 300px;
@@ -89,13 +87,9 @@ input{
         height: 28px;
         width: 250px;
     }
-    #Submit{
-        height: min-content;
-        width: min-content;
-    }
-    a{
-        font-size: 28px;
-    }
+    /* a{
+        font-size: 111%;
+    } */
     .formBody{
         height: 400px;
         width: 350px;
