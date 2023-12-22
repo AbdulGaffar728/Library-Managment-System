@@ -9,3 +9,11 @@ h2{
 .formBody{
     padding: 3%;
 }
+#checkingRole{
+    margin: auto;
+    color: red;
+    width: max-content;
+}
+#checkingRole>label{
+    margin-left: 10px;
+}

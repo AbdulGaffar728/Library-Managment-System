@@ -1,18 +1,22 @@
-var allBooksDetail;
 AddingBook=()=>{
     bookDetail={
         bookName:document.getElementById("newBookName").value.toLowerCase(),
-        bookId:document.getElementById("bookId").value.toLowerCase(),
         authorName:document.getElementById("authorName").value.toLowerCase(),
-        bookPrice:document.getElementById("bookPrice").value.toLowerCase(),
+        bookPrice:document.getElementById("bookPrice").value,
         bookCategory:document.getElementById("bookCategory").value.toLowerCase()
     }
-    detailFromStorage=JSON.parse(localStorage.getItem("BooksData"))
-    if(detailFromStorage===null){
+    var allBooksDetail=JSON.parse(localStorage.getItem("BooksData"))
+    if(allBooksDetail===null){
         allBooksDetail=[];
     }
     else{
-        allBooksDetail=detailFromStorage;
+      for(var a=0;a<allBooksDetail.length;a++){
+          if(allBooksDetail[a].bookName===document.getElementById("newBookName").value.toLowerCase())
+          {
+              alert("Book name already exists.")
+              return;
+          }
+      }
     }
     allBooksDetail.push(bookDetail)
     alert("Book added successfully.")

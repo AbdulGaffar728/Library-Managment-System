@@ -5,7 +5,7 @@
 #container{
     height: 100vh;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: rgb(247, 236, 236);
 }
 h1{
     text-align: center;

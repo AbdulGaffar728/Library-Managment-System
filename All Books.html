@@ -12,15 +12,26 @@
         <h1>ALL Books Details</h1>
         <table id="table"  border="1">
             <tr>
-                <th>Book Name</th>
-                <th>Id</th>
+                <th>Book</th>
                 <th>Author</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Quick Options</th>
             </tr>
         </table>
-        <button id="goBack"><a href="Admin Site.html">Go Back</a></button>
+        <button id="goBack" onClick="Back()">Go Back</button>
     </div>
+    <div id="editing">
+        <h1>Edit Mode</h1>
+        <br> 
+        <form action="JavaScript:void(0)" onSubmit="edited()" method="post">
+            <input type="text" name="bookName" id="book" placeholder="Book Name" required><br/><br/>  
+            <input type="text" name="author" id="author" placeholder="Author Name" required><br/><br/>
+            <input type="number" name="bookPrice" id="price" placeholder="Book Price" required><br/><br/>
+            <input type="text" name="category" id="category" placeholder="Category" required><br/><br/>
+            <input type="submit" value="Done" id="Submit">
+          </form>
+    </div> 
     <script src="JS/All Books.js">
     </script>
 </body>

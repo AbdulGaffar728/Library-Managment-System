@@ -12,7 +12,6 @@ h1{
     text-shadow: 3px 3px rgb(0, 0, 0 ,0.2);
 }
 #rules{
-    /* font-size: large; */
     color: white;
     word-spacing: 0.09cm;
     line-height: 25px;
@@ -29,11 +28,7 @@ ol{
     width: max-content;
     margin:2% 46%;
     border-radius: 5px;
-    border: 0.1px solid black;
+    color: white;
     box-shadow: 4px 4px rgb(0, 0, 0 ,0.2);
 
-}
-a{
-    color: white;
-    text-decoration: none;
 }

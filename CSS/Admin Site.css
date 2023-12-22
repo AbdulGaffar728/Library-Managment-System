@@ -5,26 +5,22 @@
 .header,#headerChild{
     display: flex;
 }
-#headerChild,#navbarIcon{
-    display: flex;
+#headerChild{
+    width: 60%;
+    height: max-content;
+}
+#navbarIcon,#headerChild,#welcome{
     position:relative;
     left: 1%;
-    width: 60%;
+    top: 1%;
+    bottom: 2%;
+    margin: 1% 4px;
 }
-#navbarIcon{
-    transform: rotate(90deg);
-    margin-top: 2%;
-    margin-left: 1%;
-    margin-bottom: 2%;
-    width: 5%;
-    color: white;
-}
-#welcome{
-    margin-top: 3%;
-    color:rgb(245, 248, 250);
-    text-shadow:black 1px 1px;
-    margin-left: 4%;
-    font-family:sans-serif;
+#welcome{ 
+    margin: 2% 3px ;
+    color:whitesmoke;
+    text-shadow:1px 1px rgb(26, 25, 25,0.4) ;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #Search>form{
     display: flex;
@@ -74,11 +70,17 @@ a{
     text-decoration: none;
     color: white;
 }
-[type="submit"]{
+[type="submit"],input{
     color: white;
-    border: 0px solid white;
+    border: 0.5px solid white;
+    background-color: rgba(25, 130, 179, 0.315);
+    padding: 5px;
+    border-radius: 3px;
 }
-.header,[type="submit"]{
+[name="search"]::placeholder{
+    color: white;
+}
+.header{
     background-color: rgb(37, 165, 165);
 }
 #body{
@@ -91,13 +93,35 @@ a{
     color:white;
 }
 #SideBar a:hover{
-    color: black;
+    color: blue;
     padding: 4px;
     cursor:pointer;
     border-radius: 5px;
     background-color: white;
 }
-
+#SideBar a:focus{
+   color:crimson;
+   background-color: antiquewhite;
+}
+#responseData{
+    height: 120px;
+    position: relative;
+    margin-bottom: 2%;
+    z-index: 4;
+    background-color: rgb(22, 100, 100);
+    color: white;
+    overflow-y: scroll;
+}
+.OK{
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    padding:3px 8px;
+    margin:2px 40%;
+}
+.responsingBox{
+    padding-top:4%;
+}
 #SideBar{
     background-color: rgb(22, 100, 100);
     color: white;
@@ -109,15 +133,85 @@ a{
     font-family:serif;
     height: 100%;
     padding-left: 2%;
-    width: 35%;
+    width: 280px;
     z-index: 2;
-    transition:left 3s ease-out;
-    overflow-x: hidden;
+    overflow: hidden;
 }
-
 #Clock{
     position: absolute;
     bottom: 2%;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size:large;
+}
+#searchBooks{
+    height: 30%;
+}
+/* Delete all data */
+#deleteAllData{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%,-50%);
+    height: max-content;
+    width: 50%;  
+    padding: 2%;
+    background-color:whitesmoke;
+    border: 2px solid silver;
+    border-radius: 25px;
+    box-shadow: 2px 2px rgba(24, 22, 22, 0.3);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+#deletePassword{
+    background-color: white;
+    height: max-content;
+    padding: 5px;
+    color: brown;
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+#deleteAllData>h2{
+    margin-right: 5%;
+    text-shadow: 1px 1px rgba(29, 27, 27, 0.411);
+}
+[value="Delete"]{
+    margin-left: 30%;
+    color: white;
+    padding: 8px 18px;
+    background-color: black;
+    border-radius: 10px;
+}
+::placeholder,#detail,#deleteAllData>h2{
+    color: darkslateblue;
+}
+#Note{
+    color: red;
+    font-style: italic;
+}
+[onClick="closeDeleteAllDataPopup()"]{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    border: 0px solid red;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: larger;
+    padding: 5px 6px;
+}
+#noDataFound{
+    display:none;
+    position: absolute;
+    right: 6%;
+    top: 6%;
+    z-index: 3;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    color: red;
 }
