@@ -36,6 +36,7 @@ checkingRequests=()=>{
           declineButton.innerHTML="Decline";
           acceptButton.className="accept";
           declineButton.className="decline";
+          confirmationBox.className="confirmationBox"
           acceptButton.id="acceptButton"+i
           declineButton.id="declineButton"+i
           acceptButton.addEventListener("click",accepting)
@@ -82,7 +83,8 @@ accepting=()=>{
     givenDate:timeNow.getDate(),
     givenMonth:timeNow.getMonth(),
     givenYear:timeNow.getFullYear(),
-    returnDate:dateOfBookReturn
+    returnDate:dateOfBookReturn,
+    userSeen:"no"
    }
    acceptedRequests.push(acceptedRequestDetails);
    localStorage.setItem("acceptedRequests",JSON.stringify(acceptedRequests))

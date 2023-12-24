@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Books</title>
+    <link rel="stylesheet" href="CSS/Popup.css">
     <link rel="stylesheet" href="CSS/All Books.css">
 </head>
 <body>
@@ -21,6 +22,18 @@
         </table>
         <button id="goBack" onClick="Back()">Go Back</button>
     </div>
+    <!-- Popup  as alert-->
+<div id="Popup">
+    <div id="text">
+        Name of book already exists.
+    </div>
+    <div id="buttons">
+        <button id="no" onClick="no()" ></button>
+        <button id="yes" onClick="yes()">OK</button>
+    </div>
+</div>
+
+    <!-- Popup for edit book -->
     <div id="editing">
         <h1>Edit Mode</h1>
         <br> 
@@ -32,7 +45,6 @@
             <input type="submit" value="Done" id="Submit">
           </form>
     </div> 
-    <script src="JS/All Books.js">
-    </script>
+    <script src="JS/All Books.js"></script>
 </body>
 </html>

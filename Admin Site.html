@@ -42,7 +42,7 @@
     </div>
     
   <div id="body">
-      <b id="noDataFound">No Data Found</b>
+      <b id="noDataFound">No Data Match</b>
     <div class="header">
        <div id="headerChild" >
           <h1 onclick="openSideBar()" id="navbarIcon"><i class="bi-list"></i></h1>
@@ -68,25 +68,24 @@
         
         <div class="boxes">
             <div class="box"><a href="Issued Books.html"><i class="bi-book"></i><br/><br/>Issued Books</a></div>
-            <div class="box"><a href="Admin return book.html"><i class="bi-file-arrow-up"></i><br/><br/>Return Book</a></div>
+            <div class="box"><a href="Delete Book.html"><i class="bi-trash"></i><br/><br/>Delete Book</a></div>
         </div>
 
         <div class="boxes">
-            <div class="box"><a href="Delete Book.html"><i class="bi-trash"></i><br/><br/>Delete Book</a></div>
+            <div class="box"><a href="Admin return book.html"><i class="bi-file-arrow-up"></i><br/><br/>Return Book <br>Requests</a></div>
         </div>
     </div>
 </div>
-<!-- //Popup for delete account -->
+<!-- //Popup for delete account & logout -->
 <div id="Popup">
     <div id="text">
-      Are you sure you want to delete this account?
     </div>
     <div id="buttons">
-        <button id="no" onClick="no()" >Cancel</button>
-        <button id="yes" onClick="yes()" >Delete</button>
+        <button id="no" onClick="no()"></button>
+        <button id="yes" onClick="yes()"></button>
     </div>
 </div>
-<!-- //Popup for delete all data -->
+<!-- Popup for delete all data -->
 <div id="deleteAllData">
     <h2>Delete All Data</h2><button onClick="closeDeleteAllDataPopup()">X</button>
     <br>
@@ -106,7 +105,7 @@
     </div>
 </div>
     <script src="JS/search.js"></script>
-    <script src="JS/Sign-Up.js"></script>
+    <script src="JS/Sign-Up.js"></script><!-- Neccessary for add admin -->
     <script src="JS/Admin Site.js"></script>
 </body>
 </html>

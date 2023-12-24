@@ -1,3 +1,10 @@
+DisplayingPopup=()=>{
+    document.getElementById("Popup").style.display="block"
+    document.getElementById("no").style.display="none"
+    document.getElementById("yes").innerHTML="OK"
+    document.getElementById("buttons").style.marginTop="10px"
+    document.getElementById("yes").style.backgroundColor="black"
+  }
 AddingBook=()=>{
     bookDetail={
         bookName:document.getElementById("newBookName").value.toLowerCase(),
@@ -13,13 +20,23 @@ AddingBook=()=>{
       for(var a=0;a<allBooksDetail.length;a++){
           if(allBooksDetail[a].bookName===document.getElementById("newBookName").value.toLowerCase())
           {
-              alert("Book name already exists.")
+            DisplayingPopup()
+            document.getElementById("text").innerHTML="Book name already exists."
               return;
           }
       }
     }
     allBooksDetail.push(bookDetail)
-    alert("Book added successfully.")
+    DisplayingPopup()
+    document.getElementById("text").innerHTML="Book added successfully."
     localStorage.setItem("BooksData",JSON.stringify(allBooksDetail))
-    window.location.href="Admin Site.html"
+}
+// when user click on OK button of popup
+yes=()=>{
+    if(document.getElementById("text").innerHTML==="Book added successfully."){
+        window.location.href="Admin Site.html"
+    }
+    else{
+        document.getElementById("Popup").style.display="none"
+    }
 }

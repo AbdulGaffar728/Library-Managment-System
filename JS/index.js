@@ -10,11 +10,19 @@ isLoggedIn=()=>{
     }
 }
 loggingIn=()=>{
+    DisplayingPopup=()=>{
+        document.getElementById("Popup").style.display="block"
+        document.getElementById("no").style.display="none"
+        document.getElementById("yes").innerHTML="OK"
+        document.getElementById("buttons").style.marginTop="10px"
+        document.getElementById("yes").style.backgroundColor="black"
+      }
     var userEmail=document.getElementById("userEmail").value
     var password=document.getElementById("password").value
     var GettingData=JSON.parse(localStorage.getItem("usersDetail"))
     if(GettingData===null){
-        alert("Plz sign-up first.")
+        DisplayingPopup()
+        document.getElementById("text").innerHTML="Plz sign-up first."
     }
     else{
     for(var i=0; i<GettingData.length;i++){
@@ -37,8 +45,12 @@ loggingIn=()=>{
             }
         }
         if(i===(GettingData.length-1)){
-            alert("Plz enter valid email/password.")
+            DisplayingPopup()
+            document.getElementById("text").innerHTML="Plz enter valid email or password."
         }
       }
     }
+}
+yes=()=>{
+    document.getElementById("Popup").style.display="none"
 }

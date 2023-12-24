@@ -59,30 +59,36 @@ setInterval(TimeUpdater,1000);
         document.getElementById("Requests").innerText+=checkingRequests.length;
     }
     }
-    logout=()=>{
-        var confirming=confirm("Are you sure you want to logout.")
-        if(confirming===true){
-            localStorage.removeItem("loggedInUser")
-            window.location.href="index.html"
-        }
-        else{
-            return;
-        }
-    }
+
     
     //Popup functions
+    //executes when user click on cancel button
     no=()=>{
         document.getElementById("Popup").style.display="none"
     }
+    logout=()=>{
+        document.getElementById("Popup").style.display="block"
+        document.getElementById("text").innerHTML="Do you want to logout?"
+        document.getElementById("yes").innerHTML="Yes"
+        document.getElementById("no").innerHTML="No"
+        document.getElementById("buttons").style.marginTop="10px"
+    }
     deletingAccount=()=>{
         document.getElementById("Popup").style.display="block"
+        document.getElementById("text").innerHTML="Do you want to delete your account?"
+        document.getElementById("yes").innerHTML="Delete"
+        document.getElementById("no").innerHTML="Cancel"
     }
     yes=()=>{
-        if(document.getElementById("yes").innerHTML==="Delete"){
+        //executes when user wants to delete account
+        if(document.getElementById("text").innerHTML==="Do you want to delete your account?"){
           var allUsersData=JSON.parse(localStorage.getItem("usersDetail"))
           var loggedInUser=JSON.parse(localStorage.getItem("loggedInUser"))
             if(allUsersData===null){
-                alert("Something wents wrong.")
+                 document.getElementById("no").style.display="none"
+                 document.getElementById("yes").innerHTML="OK"
+                 document.getElementById("text").innerHTML="Something wents wrong.Please try again."
+                 
             }
             else{
               for(var i=0;i<allUsersData.length;i++){
@@ -93,23 +99,33 @@ setInterval(TimeUpdater,1000);
                  allUsersData.splice(i,1)
                  localStorage.removeItem("loggedInUser")
                  localStorage.setItem("usersDetail",JSON.stringify(allUsersData))
-                 //Showing Alert
-                 document.getElementById("no").style.visibility="hidden"
+                 //Showing Popup
+                 document.getElementById("no").style.display="none"
                  document.getElementById("yes").innerHTML="OK"
-                 document.getElementById("yes").style.backgroundColor="rgb(6, 223, 6)"
-                 document.getElementById("text").innerHTML="Account deleted successfully.Now you cannot recover your account."
+                 document.getElementById("text").innerHTML="Your account deleted successfully.Now you cannot recover your account."
                  return;
                 } 
                 if(i===allUsersData.length-1){
-                    alert("Something wents wrong.Please try again.")
+                    document.getElementById("no").style.display="none"
+                 document.getElementById("yes").innerHTML="OK"
+                 document.getElementById("text").innerHTML="Something wents wrong.Please try again."
                 }
               }
             }
           }
-          if(document.getElementById("yes").innerHTML==="OK"){
+          //executes when account deleted and it show popupto inform that account deleted succesfully
+        else if(document.getElementById("text").innerHTML==="Your account deleted successfully.Now you cannot recover your account."){
             document.getElementById("Popup").style.display="none"
             window.location.href="Sign-Up.html"
           }
+        else if(document.getElementById("text").innerHTML==="Do you want to logout?"){
+            localStorage.removeItem("loggedInUser")
+            window.location.href="index.html"
+        }
+        else{
+            no();//Close popup on ok
+        } 
+        
     }
     //display form for delete data
     deleteAllDataForm=()=>{
@@ -145,6 +161,10 @@ setInterval(TimeUpdater,1000);
            }
         }
         else{
-            alert("Password is incorrect.")
+            document.getElementById("Popup").style.display="block"
+            document.getElementById("text").innerHTML="Password is incorrect. Please try again."
+            document.getElementById("yes").innerHTML="OK"
+            document.getElementById("no").style.display="none"
+           
         }
     }

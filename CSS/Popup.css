@@ -3,36 +3,36 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 5;
+    z-index: 8;
     height: max-content;
-    width: 40%;
-    padding:3%;
+    width: 38%;
+    padding:20px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     transform: translate(-50%,-50%);
     background-color: white;
-    border-radius: 15px;
-    box-shadow:3px 4px rgb(20, 8, 8 ,0.3) ;
+    border-radius: 10px;
+    box-shadow:0px 0px 9px rgba(0, 0, 0, 0.5) ;
 }
 #yes{
     background-color: red;
 }
-#text{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+
 #no{
-    background-color: rgb(13, 196, 38)
+    background-color: rgb(22, 196, 22);
 }
 #yes,#no{
-    margin: 4%;
-    padding: 2%;
+    padding: 10px 20px;
     border-radius: 5px;
-    color: rgb(248, 237, 237);
-    border: 1px solid silver;
-    box-shadow: 2px 2px rgb(15, 12, 12,0.3);
+    color: white;
+    border: none;
+    text-align: center;
+    margin: 6px 2px;
+    box-shadow:0px 0px 5px rgba(0, 0, 0, 0.5) ;
 }
 
 #buttons{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }

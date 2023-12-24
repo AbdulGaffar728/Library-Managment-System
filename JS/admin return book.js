@@ -1,3 +1,17 @@
+DisplayingPopup=()=>{
+    document.getElementById("Popup").style.display="block"
+    document.getElementById("no").style.display="none"
+    document.getElementById("yes").innerHTML="OK"
+    document.getElementById("buttons").style.marginTop="10px"
+    document.getElementById("yes").style.backgroundColor="black"
+  }
+  caseConverter=(para)=>{
+    words=(para).split(' ');
+      for(var j=0;j<words.length;j++){
+          words[j]=words[j].charAt(0).toUpperCase() + words[j].slice(1);
+      }
+      return words.join(' ')
+    }  
 checkingRequests=()=>{
 var localStorageData=JSON.parse(localStorage.getItem("returnRequests"))
 if(localStorageData===null || localStorageData.length===0){
@@ -20,12 +34,12 @@ for(var i=0;i<localStorageData.length;i++){
     var userEmail=document.createElement("td")
     var confirmation=document.createElement("td")
     var confirmationButton=document.createElement("button")
-        confirmationButton.className="accept"
+        confirmationButton.className="request"
         confirmationButton.id="acceptButton"+i
         confirmationButton.addEventListener("click",ReturningBook)
         confirmationButton.innerHTML="Return"
-        bookName.innerHTML=localStorageData[i].bookName;
-        userName.innerHTML=localStorageData[i].userName;
+        bookName.innerHTML=caseConverter(localStorageData[i].bookName);
+        userName.innerHTML=caseConverter(localStorageData[i].userName);
         userEmail.innerHTML=localStorageData[i].userEmail;
         creatingRow.appendChild(bookName)
         creatingRow.appendChild(userName)
@@ -64,12 +78,20 @@ ReturningBook=()=>{
         returnBookRequests.splice(a,1)
         localStorage.setItem("returnRequests",JSON.stringify(returnBookRequests))
         localStorage.setItem("bookReturnAcceptedRequests",JSON.stringify(bookReturnAcceptedRequests))
-        alert("Book returned successfully.")
-        location.reload();
+        DisplayingPopup()
+        document.getElementById("text").innerHTML="Book returned successfully."
         return;
        }
        if(a===returnBookRequests.length-1){
-           alert("No data match.")
+        DisplayingPopup()
+        document.getElementById("text").innerHTML="No data match.";
        }
    }
+}
+yes=()=>{
+        document.getElementById("Popup").style.display="none"
+        location.reload()   
+}
+Back=()=>{
+    window.history.back()
 }

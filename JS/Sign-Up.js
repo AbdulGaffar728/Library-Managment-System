@@ -22,41 +22,63 @@ function SigningUp(){
       else{
         role="user"
       }
+      DisplayingPopup=()=>{
+        document.getElementById("Popup").style.display="block"
+        document.getElementById("no").style.display="none"
+        document.getElementById("yes").innerHTML="OK"
+        document.getElementById("buttons").style.marginTop="10px"
+        document.getElementById("yes").style.backgroundColor="black"
+      }
       if(password.length>5 && password.length<15){
         if(password===confirmPassword){
-           var userData={
-             Name:userName,
-             Email:userEmail,
-             Password:password,
-             Role:role
-           }
-        if(localData===null){ 
-           localData=[];
+              var userData={
+                Name:userName,
+                Email:userEmail,
+                Password:password,
+                Role:role
+              }
+             if(localData===null){ 
+                localData=[];
+              }
+             else{
+                for(var a=0;a<localData.length;a++){
+                   if(localData[a].Email===userEmail){
+                       DisplayingPopup()
+                       document.getElementById("text").innerHTML="Account with this email exists."
+                       return;
+                   }
+                }
+              }
+              localData.push(userData);
+              localStorage.setItem("usersDetail",JSON.stringify(localData))
+              if(role==="admin"){
+                 DisplayingPopup()
+                 document.getElementById("text").innerHTML="Admin added successfully."
+              }
+              else{
+                 DisplayingPopup()
+                 document.getElementById("text").innerHTML="Signed-Up successfully."
+              }
         }
         else{
-          for(var a=0;a<localData.length;a++){
-            if(localData[a].Email===userEmail){
-               alert("Account with this email exists.")
-               return;
-            }
-          }
+            DisplayingPopup()
+            document.getElementById("text").innerHTML="Both passwords are not same."
         }
-       localData.push(userData);
-       localStorage.setItem("usersDetail",JSON.stringify(localData))
-       if(role==="admin"){
-           alert("Admin added successfully.")
-           window.history.back()
-       }
-       else{
-           alert("Signed-Up successfully")
-           window.location.href="index.html";
-        }
-      }
-     else{
-         alert("Both passwords are not same.")
      }
+     else{
+        DisplayingPopup()
+        document.getElementById("text").innerHTML="Password must contain at least 6 characters and maximum 15 characters."
+     }
+  }
+  // Popup functions
+  yes=()=>{
+    if(document.getElementById("text").innerHTML==="Admin added successfully."){
+      window.history.back()
+    }
+    else if(document.getElementById("text").innerHTML==="Signed-Up successfully."){
+      window.location.href="index.html";
     }
     else{
-      alert("Password must contain at least 6 characters and maximum 15 characters.")
+      document.getElementById("Popup").style.display="none"
     }
   }

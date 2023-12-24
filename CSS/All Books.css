@@ -3,94 +3,107 @@
     padding: 0;
 }
 body{
-    background-color: darkcyan;
+    text-align: center;
+    background-color: white;
 }
 h1{
     text-align: center;
-    color:white;
-    padding-top: 13px;
-    padding-bottom: 10px;
-    text-shadow: black 1px 1px;
+    color:red;
+    margin: 11px auto;
+    text-shadow: 0px 0px 1px rgba(12, 0, 0, 0.596);
 }
 table{
     width: 96%;
     margin: auto;
     padding: 3px;
     text-align: center;  
-    border: 2px solid black;
-    
+    border: none;  
 }
-th{
-    padding: 3px;
-    color: silver;
-    text-shadow:black 0.5px 0.5px;
-}
-td{
-    padding: 3px;
-    color: rgb(14, 209, 243);
-}
-#goBack{
-    background-color: black;
-    padding: 10px;
-    height:max-content;
-    width: max-content;
-    margin:2% 46%;
-    border-radius: 5px;
-    color: white;
-    box-shadow: 4px 4px rgb(0, 0, 0 ,0.2);
 
+th{
+    color: blue;
+    font-size: large;
+}
+th,td{
+    box-shadow: 0.2px 0.2px 0.2px black;
+    padding: 9px;
+}
+a{
+    text-decoration: none;
+    color: white;
 }
 .delete,.request,.editing{
     color: white;
-    padding: 5px;
     margin: auto;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 6px;
+    box-shadow: 0px 0px 6px rgba(1, 3, 3, 0.4);
+}
+.request,.editing,.delete,#goBack{
+    border: none;
 }
 .delete{
-    margin-left:7px;
     background-color: red;
+    margin-left:7px;
+    
 }
 .request,.editing{
     margin: auto;
-    background-color: rgb(22, 196, 22);
+    padding: 6px 10px;
+    background-color: rgb(63, 214, 63);
 }
+
+.confirmationBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#goBack{
+    background-color: blue;
+    padding: 10px;
+    width: max-content;
+    border-radius: 5px;
+    color: white;
+    margin-top: 2%;
+    box-shadow: 0px 0px 10px rgba(34, 31, 31, 0.582);
+}
+
 /* Popup for edit data */
 #editing{
     display: none;
-    background-color: cadetblue;
-    width: max-content;
-    height: max-content;
-    border: 2px solid rgb(53, 42, 42);
+    background-color: white;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 8px rgba(32, 32, 32, 0.548);
+    border: 1px solid rgb(53, 42, 42);
     padding: 2%;
     position: fixed;
-    top: 65px;
-    left: 36%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     border-radius: 25px;
-    box-shadow: 4px 4px rgb(27, 27, 27, 0.3);
 }
-#editing>h1{
-    color: rgb(221, 223, 224);
-}
+
 input{
-    background-color: rgb(96, 171, 173);
     height: max-content;
     padding: 5px;
     margin: auto;
-    border: 1px solid black;
+    border: 0.5px solid blue;
     border-radius: 5px;
 }
 [type="submit"]{
-    margin-left: 30%;
-    color: white;
-    padding: 8px 18px;
-    background-color: black;
+    color:white;
+    padding: 9px 10px;
+    box-shadow: 0px 0px 6px rgba(2, 2, 2, 0.5);
+    border: none;
+    background-color: blue;
 }
 .searchedTerm{
-    /* background-color: rgb(91, 194, 194); */
     text-decoration: underline;
-    color: white;
+    color: red;
     font-weight: 800;
-    text-shadow: 0.2px 0.2px black;
     font-style:oblique;
 }

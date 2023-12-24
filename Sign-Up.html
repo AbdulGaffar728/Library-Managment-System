@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-Up Page</title>
+    <link rel="stylesheet" href="CSS/Popup.css">
     <link rel="stylesheet" href="CSS/Sign-Up.css">
 </head>
 <body onLoad="checkingRole()">
@@ -19,14 +20,23 @@
              <input type="password" name="password" id="password" required placeholder="Password"><br/><br/>
              <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="Confirm Password"><br/><br/>
              <input type="hidden" name="role" id="Role" value="user">
-          <span class="submit">   
-              <input type="submit"  id="Submit" value="Sign-Up">
-          </span>
+             <span class="submit">   
+               <input type="submit"  id="Submit" value="Sign-Up">
+             </span>
       </form>
       <br/><br/>
       <div id="Account">
           <a href="index.html">Have an account?</a>
       </div>
+    </div>
+</div>
+<!-- Popup -->
+<div id="Popup">
+    <div id="text">
+    </div>
+    <div id="buttons">
+        <button id="no" onClick="no()" ></button>
+        <button id="yes" onClick="yes()"></button>
     </div>
 </div>
 <script src="JS/Sign-Up.js"></script>

@@ -6,7 +6,7 @@ caseConverter=(para)=>{
       }
       return words.join(' ')
     }
-//Deleting response which is seen by user.
+//Delete response data when user click on Ok.
 responseSeen=()=>{
     var idOfClickedButton=event.target.parentNode.id;
     var parentElement=document.getElementById(idOfClickedButton)
@@ -19,7 +19,7 @@ responseSeen=()=>{
     }
     else{
       for(var c=0;c<returnAcceptedRequests.length;c++){
-          if(bookSeen.toLowerCase()===returnAcceptedRequests[c].bookName
+          if(bookSeen.toLowerCase()===returnAcceptedRequests[c].bookName.toLowerCase()
           && loggedInUser.Email===returnAcceptedRequests[c].userEmail){
               returnAcceptedRequests.splice(c,1)
               localStorage.setItem("bookReturnAcceptedRequests",JSON.stringify(returnAcceptedRequests))
@@ -33,9 +33,11 @@ responseSeen=()=>{
     }
     else{
       for(var d=0;d<acceptedRequests.length;d++){
-          if(bookSeen.toLowerCase()===acceptedRequests[d].bookName
-          && loggedInUser.Email===acceptedRequests[d].userEmail){
-              acceptedRequests.splice(d,1)
+          if(bookSeen.toLowerCase()===acceptedRequests[d].bookName.toLowerCase()
+          && loggedInUser.Email===acceptedRequests[d].userEmail
+          && acceptedRequests[d].userSeen==="no"){
+              delete acceptedRequests[d].userSeen;
+              acceptedRequests[d].userSeen="yes";
               localStorage.setItem("acceptedRequests",JSON.stringify(acceptedRequests))
               loadingData()
               return;
@@ -47,7 +49,7 @@ responseSeen=()=>{
     }
     else{ 
       for(var e=0;e<declinedRequests.length;e++){
-          if(bookSeen.toLowerCase()===declinedRequests[e].bookName
+          if(bookSeen.toLowerCase()===declinedRequests[e].bookName.toLowerCase()
           && loggedInUser.Email===declinedRequests[e].userEmail){
               declinedRequests.splice(e,1)
               localStorage.setItem("declinedRequests",JSON.stringify(declinedRequests))
@@ -74,10 +76,10 @@ createView=(book,msg,idNumber,date)=>{
    creatingButton.className="OK"
    creatingParent.className="responsingBox"
    creatingButton.addEventListener('click',responseSeen)
-   creatingPara.appendChild(spanForBookName)
+   creatingPara.appendChild(spanForBookName) 
    creatingPara.appendChild(dateAndMsg)
 }
-    //checking no of responses by admin
+    //checking no of responses
 loadingData=()=>{
     document.getElementById("responseData").innerHTML=""
    var noOfResponse=0
@@ -89,7 +91,8 @@ loadingData=()=>{
      }
      else{
          for(var a=0;a<acceptedRequests.length;a++){
-          if(loggedInUser.Email===acceptedRequests[a].userEmail){
+          if(loggedInUser.Email===acceptedRequests[a].userEmail
+             && acceptedRequests[a].userSeen==="no"){
              noOfResponse+=1;
              var acceptedDate=`${acceptedRequests[a].givenDate}-${Number(acceptedRequests[a].givenMonth)+1}-${acceptedRequests[a].givenYear}`
              createView(acceptedRequests[a].bookName,"book assign request was accepted at",noOfResponse,acceptedDate)

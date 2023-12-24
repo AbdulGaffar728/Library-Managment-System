@@ -2,97 +2,59 @@
     margin: 0px;
     padding: 0px;
 }
-.body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(234, 205, 248);
+body{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     
 }
-.formBody{
-    border-radius: 8%;
-    padding: 3%;
-    margin: 2%;
-    border: 1px solid silver;
-    background-color: rgba(241, 235, 235, 0.5);
-    flex-direction: column;
+.body{
+    display: flex;
+    justify-content: center;
 }
 #Account,.submit,h1,h2,.formBody{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color:blue;
+    padding: 2px;
     text-align: center;
 }
-#Submit{
-    width: 34%;
-    color: rgb(168, 9, 83);
-    padding: 8px;
-    background-color: rgb(231, 213, 213);
+.formBody{
+    padding:4% 3% ;
+    border-radius: 8%;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 6px rgba(7, 7, 7, 0.534);
+    flex-direction: column;
+}
+
+[type="submit"]{
+    color:white;
+    padding: 9px 10px;
+    box-shadow: 0px 0px 6px rgba(112, 24, 24, 0.507);
+    border: none;
+    background-color: blue;
 }
 a{
-    font-size: 111%;
+    font-size: larger;
     text-decoration: none;
+    color: red;
+}
+h2{
+    font-family: sans-serif;
+    color: red;
+    text-shadow:0px 0px 1px rgba(39, 38, 38, 0.555);
 }
 input{
     border-radius: 5px;
-    border: 1px solid rgb(91, 93, 94);
-    padding: 4px;
+    border: 0.5px solid rgba(20, 20, 20, 0.473);
+    padding: 5px 8px;
 }
 
-@media(max-width:491px){
-    .submit{
-        height: 20px;
-        font-size: 13px;
-    }
-    input{
-        margin: 50%;
-        height: 20px;
-        width: 170px;
-    }
-    /* a{
-        font-size: 20px;
-    } */
-    .formBody{
-        height: 480px;
-        width: 300px;
-    }   
+#checkingRole{
+    margin: auto;
+    color: red;
+    width: max-content;
 }
-@media(min-width:492px)and(max-width:1023px){
-    .submit{
-        height: 25px;
-        font-size: 15px;
-    }
-    input{
-        height: 25px;
-        width: 225px;
-    }
-    /* a{
-        font-size: 24px;
-    } */
-    .formBody{
-        height: 350px;
-        width: 300px;
-    }   
-}
-
-@media(min-width:1024px){
-    .submit{
-        height: 30px;
-        font-size: 18px;
-    }
-    input{
-        height: 28px;
-        width: 250px;
-    }
-    /* a{
-        font-size: 111%;
-    } */
-    .formBody{
-        height: 400px;
-        width: 350px;
-    }   
+#checkingRole>label{
+    margin-left: 10px;
 }

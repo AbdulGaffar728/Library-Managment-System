@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="CSS/Popup.css">
     <link rel="stylesheet" href="CSS/Sign-Up.css">
-    <link rel="stylesheet" href="CSS/Login.css">
 </head>
 <body onLoad="isLoggedIn()">
     <div class="body">
         <div class="formBody">
-            <h2>Welcome to SkyHub <br/>Library</h2><br/>
+            <h2>SkyHub Library</h2><br/>
         <h1>
             Login
         </h1><br/>
@@ -29,6 +29,16 @@
       <div id="Account">
           <a href="Sign-Up.html">Did't have an account?</a>
       </div>
+    </div>
+</div>
+
+<!-- Popup -->
+<div id="Popup">
+    <div id="text">
+    </div>
+    <div id="buttons">
+        <button id="no" onClick="no()" ></button>
+        <button id="yes" onClick="yes()"></button>
     </div>
 </div>
 <script src="JS/index.js"></script>

@@ -1,7 +1,18 @@
 var loggedInUser=JSON.parse(localStorage.getItem("loggedInUser"))
-var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
-        var bookName,editButton,selectButton,selection,author,category,price,creatingRow,words,bookNameInCamelCase,authorNameInCamelCase,bookCategoryInCamelCase;
-        if(gettingDetail===null || gettingDetail.length===0){  
+var allBooksData=JSON.parse(localStorage.getItem("BooksData"));
+var issuedBooks=JSON.parse(localStorage.getItem("acceptedRequests"));
+    if(issuedBooks===null){
+        issuedBooks=[]
+    }
+    DisplayingPopup=()=>{
+        document.getElementById("Popup").style.display="block"
+        document.getElementById("no").style.display="none"
+        document.getElementById("yes").innerHTML="OK"
+        document.getElementById("buttons").style.marginTop="10px"
+        document.getElementById("yes").style.backgroundColor="blue"
+      }
+var bookName,indexAtBookIs,indexAtBookIsInIssedBooks,editButton,selectButton,selection,author,category,price,creatingRow,words,bookNameInCamelCase,authorNameInCamelCase,bookCategoryInCamelCase;
+        if(allBooksData===null || allBooksData.length===0){  
             creatingRow=document.createElement("tr") 
         var noData=document.createElement("th")
             noData.innerHTML="No Data Found"
@@ -15,7 +26,6 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
      
         }
         else{
-            
             caseConverter=(para)=>{
             words=(para).split(' ');
               for(var j=0;j<words.length;j++){
@@ -29,68 +39,111 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
                 var idOfClickedButton=event.target.parentNode.parentNode.id;
                  parentElement=document.getElementById(idOfClickedButton)
             }
-          //if user clicked than send request otherwise delte specific book data
+          //if user clicked than send request otherwise delete specific book data
             deletingOrRequesting=()=>{
-                findingParentElement()
-                for(var g=0;g<gettingDetail.length;g++){
-                    if((parentElement.childNodes[0].innerHTML).toLowerCase()===gettingDetail[g].bookName)
-                    { 
+                findingParentElement();
+                for(var g=0;g<allBooksData.length;g++){
+                    for(var k=0;k<issuedBooks.length;k++){
+                      if((parentElement.childNodes[0].innerHTML).toLowerCase()===allBooksData[g].bookName)
+                      { 
                          if(loggedInUser.Role==="admin"){
-                            gettingDetail.splice(g,1);
-                            localStorage.setItem("BooksData",JSON.stringify(gettingDetail))
-                            location.reload();
-                        }
-                        else{
+                            if((parentElement.childNodes[0].innerHTML).toLowerCase()===issuedBooks[k].bookName){
+                                DisplayingPopup();
+                                indexAtBookIs=g;
+                                indexAtBookIsInIssedBooks=k;
+                                bookNameInCamelCase=caseConverter(allBooksData[g].bookName)
+                                document.getElementById("no").style.display="block"
+                                document.getElementById("yes").innerHTML="Delete"
+                                document.getElementById("no").innerHTML="Cancel"
+                                document.getElementById("yes").style.backgroundColor="red"
+                                document.getElementById("text").innerHTML=`${bookNameInCamelCase} book was assigned to someone. Do you want to delete this book.`
+                                return;    
+                            }
+                          }
+                         else{
                             localStorage.setItem("bookName",parentElement.childNodes[0].innerHTML)
                             window.location.href="Send Request.html"
+                            return;
+                          }
+                       }
+                    }
+                    if(loggedInUser.Role==="admin"){
+                        findingParentElement();
+                        for(var b=0;b<allBooksData.length;b++){
+                            if(allBooksData[b].bookName===(parentElement.childNodes[0].innerHTML).toLowerCase()){
+                                allBooksData.splice(b,1);
+                                localStorage.setItem("BooksData",JSON.stringify(allBooksData))
+                                location.reload();
+                                return;
+                            }
                         }
                     }
+                    
                 }
             }
-             //check which book admin want to edit
-            var bookToEdit;
+             //Executes when user click on edit button
+            var bookToEdit,bookInCamelCase;
             editingData=()=>{
                 findingParentElement()
-                for(var c=0;c<gettingDetail.length;c++){
-                  if((parentElement.childNodes[0].innerHTML).toLowerCase()===gettingDetail[c].bookName.toLowerCase())
+                // checking that this book issued or not
+                for(var d=0;d<issuedBooks.length;d++){
+                   if((parentElement.childNodes[0].innerHTML).toLowerCase()===issuedBooks[d].bookName.toLowerCase()){
+                    DisplayingPopup();
+                    bookInCamelCase=caseConverter(issuedBooks[d].bookName)
+                    document.getElementById("yes").innerHTML="OK"
+                    document.getElementById("text").innerHTML=`${bookInCamelCase} book was assigned to someone therefore you cannot edit this book. Please try later.`
+                    return;
+                    }
+                }
+                //checking which book admin want to edit
+                for(var c=0;c<allBooksData.length;c++){
+                  if((parentElement.childNodes[0].innerHTML).toLowerCase()===allBooksData[c].bookName.toLowerCase())
                   { 
-                    bookToEdit=gettingDetail[c].bookName;
-                    document.getElementById("editing").style.display="block"
-                    document.getElementById("book").value=caseConverter(gettingDetail[c].bookName)
-                    document.getElementById("author").value=caseConverter(gettingDetail[c].authorName)
-                    document.getElementById("price").value=gettingDetail[c].bookPrice
-                    document.getElementById("category").value=caseConverter(gettingDetail[c].bookCategory)
+                    bookToEdit=(allBooksData[c].bookName).toLowerCase;
+                    document.getElementById("editing").style.display="flex"
+                    document.getElementById("book").value=caseConverter(allBooksData[c].bookName)
+                    document.getElementById("author").value=caseConverter(allBooksData[c].authorName)
+                    document.getElementById("price").value=allBooksData[c].bookPrice
+                    document.getElementById("category").value=caseConverter(allBooksData[c].bookCategory)
                   }
                   
                 }
             }
             //saving data after edit
             edited=()=>{
-                for(var z=0;z<gettingDetail.length;z++){
-                    if(gettingDetail[z].bookName===document.getElementById("book").value
-                    && bookToEdit!==document.getElementById("book").value){
-                        alert("Name of book already exists.")
-                        return;
+                //Use two loops becaz the book admin want to edit may exist after this book name
+                for(var z=0;z<allBooksData.length;z++){
+                    //check if book name already exist or not.If book name is not changed than following condition not executes
+                    if(allBooksData[z].bookName===(document.getElementById("book").value).toLowerCase()
+                    && bookToEdit!==(document.getElementById("book").value).toLowerCase()){
+                          document.getElementById("Popup").style.display="block"
+                          document.getElementById("no").style.display="none"
+                          document.getElementById("buttons").style.marginTop="10px"
+                          document.getElementById("yes").style.backgroundColor="black"
+                          document.getElementById("text").innerHTML="Book with this name already exists."
+                          return;
                     }
-                    else{
-                      if(gettingDetail[z].bookName===bookToEdit){
+                }
+                for(var y=0;y<allBooksData.length;y++){
+                    if(allBooksData[y].bookName===bookToEdit){//check index at book is
                           var dataAfterEdit={
                               bookName:document.getElementById("book").value.toLowerCase(),
                               authorName:document.getElementById("author").value.toLowerCase(),
                               bookPrice:document.getElementById("price").value,
                               bookCategory:document.getElementById("category").value.toLowerCase()
                           }
-                          gettingDetail.splice(z,1,dataAfterEdit)
-                          localStorage.setItem("BooksData",JSON.stringify(gettingDetail))
+                          allBooksData.splice(y,1,dataAfterEdit)
+                          localStorage.setItem("BooksData",JSON.stringify(allBooksData))
                           document.getElementById("editing").style.display="none"
                           location.reload();
+                          return;
                       }
-                    }
                 }
+                
             }
             //loading data for page
         loadingData=()=>{
-            for(var i=0;i<gettingDetail.length;i++){
+            for(var i=0;i<allBooksData.length;i++){
               creatingRow=document.createElement("tr");
               document.getElementById("table").appendChild(creatingRow)
               author=document.createElement("td")
@@ -103,11 +156,11 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
               editButton.className="editing"
               editButton.innerHTML="Edit"
               creatingRow.id="rowNo"+i;
-              selection.className="selectionBox"
+              selection.className="confirmationBox"
               // Converting into CamelCase
-              bookNameInCamelCase=caseConverter(gettingDetail[i].bookName);
-              authorNameInCamelCase=caseConverter(gettingDetail[i].authorName)
-              bookCategoryInCamelCase=caseConverter(gettingDetail[i].bookCategory)
+              bookNameInCamelCase=caseConverter(allBooksData[i].bookName);
+              authorNameInCamelCase=caseConverter(allBooksData[i].authorName)
+              bookCategoryInCamelCase=caseConverter(allBooksData[i].bookCategory)
               //Assigning value
               if(loggedInUser.Role==="admin"){
                 selectButton.className="delete" 
@@ -119,7 +172,7 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
                 selectButton.className="request"
                 
               }
-               price.innerHTML=gettingDetail[i].bookPrice
+               price.innerHTML=allBooksData[i].bookPrice
                bookName.innerHTML=bookNameInCamelCase
                author.innerHTML=authorNameInCamelCase;
                category.innerHTML=bookCategoryInCamelCase
@@ -135,19 +188,19 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
            //checking for search
                var searchedTerm=localStorage.getItem("searchedTerm")
            if(searchedTerm===null){
-               searchedTerm=" ";
+               searchedTerm="";
            }
            var parent=document.getElementById("rowNo"+i)
-           if(gettingDetail[i].bookName===searchedTerm.toLowerCase()){
+           if(allBooksData[i].bookName===searchedTerm.toLowerCase()){
                  parent.childNodes[0].className="searchedTerm"
            }
-           else if(gettingDetail[i].authorName===searchedTerm.toLowerCase()){
+           else if(allBooksData[i].authorName===searchedTerm.toLowerCase()){
                  parent.childNodes[1].className="searchedTerm"
            }
-           else if(gettingDetail[i].bookCategory===searchedTerm.toLowerCase()){
+           else if(allBooksData[i].bookCategory===searchedTerm.toLowerCase()){
                  parent.childNodes[2].className="searchedTerm"
            }
-           if((gettingDetail.length-1)===i){
+           if((allBooksData.length-1)===i){
                localStorage.removeItem("searchedTerm")
              // remove the searched term when all data is loaded
            }
@@ -157,4 +210,21 @@ var gettingDetail=JSON.parse(localStorage.getItem("BooksData"));
         }
 Back=()=>{
     window.history.back()
+}
+//Popup functions
+no=()=>{
+    document.getElementById("Popup").style.display="none"
+}
+yes=()=>{
+    if(document.getElementById("text").innerHTML===`${bookNameInCamelCase} book was assigned to someone. Do you want to delete this book.`){
+        allBooksData.splice(indexAtBookIs,1);
+        localStorage.setItem("BooksData",JSON.stringify(allBooksData))
+        location.reload();
+        issuedBooks.splice(indexAtBookIsInIssedBooks,1)
+        localStorage.setItem("acceptedRequests",JSON.stringify(issuedBooks))
+        return;
+    }
+    else{
+        no()
+    }
 }

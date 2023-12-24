@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Return Book Requests </title>
-    <link rel="stylesheet" href="CSS/Requests.css">
+    <link rel="stylesheet" href="CSS/Popup.css">
+    <link rel="stylesheet" href="CSS/All Books.css">
 </head>
 <body onLoad="checkingRequests()">
     <div id="container">
-        <br>
-    <h1>Return Book Requests</h1><br>
-    <table border="0" id="table">
+        
+    <h1>Return Book Requests</h1>
+    <table border="1" id="table">
         <tr>
             <th>Book Name</th>
             <th>User Name</th>
@@ -19,6 +20,16 @@
             <th>Confirmation</th>
         </tr>
     </table>
+    <button id="goBack" onClick="Back()">Go Back</button>
+</div>
+<!-- Popup -->
+<div id="Popup">
+    <div id="text">
+    </div>
+    <div id="buttons">
+        <button id="no" onClick="no()" ></button>
+        <button id="yes" onClick="yes()"></button>
+    </div>
 </div>
   <script src="JS/admin return book.js"></script>  
 </body>
