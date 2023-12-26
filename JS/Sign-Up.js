@@ -1,5 +1,17 @@
 var usersDetail=[];
 var loggedInUser=JSON.parse(localStorage.getItem("loggedInUser"))
+addEventOnEnter=()=>{
+  if(document.getElementById("Popup").style.display==="block"){
+    document.addEventListener("keydown",function(event){
+      if(event.key==="Enter"){
+        yes()
+      }
+    })
+  }
+}
+if(loggedInUser!==null){
+  window.location.href="index.html"
+}
 checkingRole=()=>{
 if(loggedInUser===null){
     document.getElementById("Role").value="user"
@@ -45,6 +57,7 @@ function SigningUp(){
                    if(localData[a].Email===userEmail){
                        DisplayingPopup()
                        document.getElementById("text").innerHTML="Account with this email exists."
+                       addEventOnEnter()
                        return;
                    }
                 }
@@ -54,6 +67,7 @@ function SigningUp(){
               if(role==="admin"){
                  DisplayingPopup()
                  document.getElementById("text").innerHTML="Admin added successfully."
+                 addEventOnEnter()
               }
               else{
                  DisplayingPopup()
@@ -63,11 +77,13 @@ function SigningUp(){
         else{
             DisplayingPopup()
             document.getElementById("text").innerHTML="Both passwords are not same."
+            addEventOnEnter()
         }
      }
      else{
         DisplayingPopup()
         document.getElementById("text").innerHTML="Password must contain at least 6 characters and maximum 15 characters."
+        addEventOnEnter()
      }
   }
   // Popup functions

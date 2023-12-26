@@ -5,6 +5,15 @@ DisplayingPopup=()=>{
     document.getElementById("buttons").style.marginTop="10px"
     document.getElementById("yes").style.backgroundColor="black"
   }
+addEventOnEnter=()=>{
+    if(document.getElementById("Popup").style.display==="block"){
+      document.addEventListener("keydown",function(event){
+        if(event.key==="Enter"){
+          yes()
+        }
+      })
+    }
+  }
 AddingBook=()=>{
     bookDetail={
         bookName:document.getElementById("newBookName").value.toLowerCase(),
@@ -22,6 +31,7 @@ AddingBook=()=>{
           {
             DisplayingPopup()
             document.getElementById("text").innerHTML="Book name already exists."
+            addEventOnEnter()
               return;
           }
       }
@@ -29,6 +39,7 @@ AddingBook=()=>{
     allBooksDetail.push(bookDetail)
     DisplayingPopup()
     document.getElementById("text").innerHTML="Book added successfully."
+    addEventOnEnter()
     localStorage.setItem("BooksData",JSON.stringify(allBooksDetail))
 }
 // when user click on OK button of popup

@@ -5,7 +5,16 @@ DisplayingPopup=()=>{
     document.getElementById("buttons").style.marginTop="10px"
     document.getElementById("yes").style.backgroundColor="black"
   }
-  caseConverter=(para)=>{
+addEventOnEnter=()=>{
+    if(document.getElementById("Popup").style.display==="block"){
+      document.addEventListener("keydown",function(event){
+        if(event.key==="Enter"){
+          yes()
+        }
+      })
+    }
+  }
+caseConverter=(para)=>{
     words=(para).split(' ');
       for(var j=0;j<words.length;j++){
           words[j]=words[j].charAt(0).toUpperCase() + words[j].slice(1);
@@ -80,11 +89,13 @@ ReturningBook=()=>{
         localStorage.setItem("bookReturnAcceptedRequests",JSON.stringify(bookReturnAcceptedRequests))
         DisplayingPopup()
         document.getElementById("text").innerHTML="Book returned successfully."
+        addEventOnEnter()
         return;
        }
        if(a===returnBookRequests.length-1){
         DisplayingPopup()
         document.getElementById("text").innerHTML="No data match.";
+        addEventOnEnter()   
        }
    }
 }

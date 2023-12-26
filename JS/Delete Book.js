@@ -6,6 +6,15 @@ DisplayingPopup=()=>{
     document.getElementById("buttons").style.marginTop="10px"
     document.getElementById("yes").style.backgroundColor="black"
   }
+addEventOnEnter=()=>{
+    if(document.getElementById("Popup").style.display==="block"){
+      document.addEventListener("keydown",function(event){
+        if(event.key==="Enter"){
+          yes()
+        }
+      })
+    }
+  }
 deletingBook=()=>{
     caseConverter=(para)=>{
         words=(para).split(' ');
@@ -22,6 +31,7 @@ deletingBook=()=>{
     if(allBooksData===null){
         DisplayingPopup()
         document.getElementById("text").innerHTML="No data match."
+        addEventOnEnter()
     }
     else{
         for(var i=0;i<allBooksData.length;i++){
@@ -36,6 +46,7 @@ deletingBook=()=>{
                     document.getElementById("no").innerHTML="Cancel"
                     document.getElementById("yes").style.backgroundColor="red"
                     document.getElementById("text").innerHTML=`${bookNameInCamelCase} book was assigned to someone. Do you want to delete this book.`
+                    addEventOnEnter()
                     return;    
                 }
              } 
@@ -49,12 +60,14 @@ deletingBook=()=>{
                  localStorage.setItem("BooksData",JSON.stringify(allBooksData));
                  DisplayingPopup()
                  document.getElementById("text").innerHTML=`${bookInCamelCase}  Book data deleted successfully.`
+                 addEventOnEnter()
                  return;                   
             }
             else if(c===(allBooksData.length-1))
                 { 
                     DisplayingPopup()
                     document.getElementById("text").innerHTML="No data match."
+                    addEventOnEnter()
                     return;
                 }
             }
@@ -74,6 +87,7 @@ yes=()=>{
                    localStorage.setItem("BooksData",JSON.stringify(allBooksData));
                    DisplayingPopup()
                    document.getElementById("text").innerHTML=`${bookNameInCamelCase}  Book data deleted successfully.`
+                   addEventOnEnter()
                    issuedBooks.splice(indexAtBookIsInIssuedBooks,1)
                    localStorage.setItem("acceptedRequests",JSON.stringify(issuedBooks))
                    return;

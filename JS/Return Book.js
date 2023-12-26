@@ -8,6 +8,15 @@ DisplayingPopup=()=>{
     document.getElementById("buttons").style.marginTop="10px"
     document.getElementById("yes").style.backgroundColor="black"
   }
+addEventOnEnter=()=>{
+    if(document.getElementById("Popup").style.display==="block"){
+      document.addEventListener("keydown",function(event){
+        if(event.key==="Enter"){
+          yes()
+        }
+      })
+    }
+  }
 ReturnBook=()=>{
     var allBooks=JSON.parse(localStorage.getItem("BooksData"));
   var givenBooksData=JSON.parse(localStorage.getItem("acceptedRequests"))
@@ -32,6 +41,7 @@ for(var z=0;z<allBooks.length;z++){
     if(isExist===false){
        DisplayingPopup()
         document.getElementById("text").innerHTML=`Book with this name not exists`
+        addEventOnEnter()
         return;
     }
   //checking this book was assigned or not
@@ -46,6 +56,7 @@ for(var z=0;z<allBooks.length;z++){
   if(assignedOrNot===false){
     DisplayingPopup()
     document.getElementById("text").innerHTML="This book was not assigned to you. Confirm that all input values are correct."
+    addEventOnEnter()
     return;
   }
   var returningRequests={
@@ -57,6 +68,7 @@ for(var z=0;z<allBooks.length;z++){
        localStorage.setItem("returnRequests",JSON.stringify(returnBookRequests))
        DisplayingPopup()
        document.getElementById("text").innerHTML="Your request for return book sended to admin.";
+       addEventOnEnter()
 }
 yes=()=>{
     if(document.getElementById("text").innerHTML==="Your request for return book sended to admin."){

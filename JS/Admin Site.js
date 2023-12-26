@@ -60,7 +60,15 @@ setInterval(TimeUpdater,1000);
     }
     }
 
-    
+    addEventOnEnter=()=>{
+        if(document.getElementById("Popup").style.display==="block"){
+          document.addEventListener("keydown",function(event){
+            if(event.key==="Enter"){
+              yes()
+            }
+          })
+        }
+      }
     //Popup functions
     //executes when user click on cancel button
     no=()=>{
@@ -72,12 +80,14 @@ setInterval(TimeUpdater,1000);
         document.getElementById("yes").innerHTML="Yes"
         document.getElementById("no").innerHTML="No"
         document.getElementById("buttons").style.marginTop="10px"
+        addEventOnEnter()
     }
     deletingAccount=()=>{
         document.getElementById("Popup").style.display="block"
         document.getElementById("text").innerHTML="Do you want to delete your account?"
         document.getElementById("yes").innerHTML="Delete"
         document.getElementById("no").innerHTML="Cancel"
+        addEventOnEnter()
     }
     yes=()=>{
         //executes when user wants to delete account
@@ -88,7 +98,7 @@ setInterval(TimeUpdater,1000);
                  document.getElementById("no").style.display="none"
                  document.getElementById("yes").innerHTML="OK"
                  document.getElementById("text").innerHTML="Something wents wrong.Please try again."
-                 
+                 addEventOnEnter()
             }
             else{
               for(var i=0;i<allUsersData.length;i++){
@@ -103,12 +113,14 @@ setInterval(TimeUpdater,1000);
                  document.getElementById("no").style.display="none"
                  document.getElementById("yes").innerHTML="OK"
                  document.getElementById("text").innerHTML="Your account deleted successfully.Now you cannot recover your account."
+                 addEventOnEnter()
                  return;
                 } 
                 if(i===allUsersData.length-1){
                     document.getElementById("no").style.display="none"
                  document.getElementById("yes").innerHTML="OK"
                  document.getElementById("text").innerHTML="Something wents wrong.Please try again."
+                 addEventOnEnter()
                 }
               }
             }
@@ -165,6 +177,7 @@ setInterval(TimeUpdater,1000);
             document.getElementById("text").innerHTML="Password is incorrect. Please try again."
             document.getElementById("yes").innerHTML="OK"
             document.getElementById("no").style.display="none"
+            addEventOnEnter()
            
         }
     }

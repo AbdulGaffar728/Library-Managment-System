@@ -5,6 +5,15 @@ DisplayingPopup=()=>{
         document.getElementById("buttons").style.marginTop="10px"
         document.getElementById("yes").style.backgroundColor="black"
       }
+addEventOnEnter=()=>{
+        if(document.getElementById("Popup").style.display==="block"){
+          document.addEventListener("keydown",function(event){
+            if(event.key==="Enter"){
+              yes()
+            }
+          })
+        }
+      }
    var loggedInUser=JSON.parse(localStorage.getItem("loggedInUser"))
        document.getElementById("userName").value=loggedInUser.Name;
        document.getElementById("userEmail").value=loggedInUser.Email;
@@ -36,6 +45,7 @@ for(var z=0;z<allBooks.length;z++){
     if(isExist===false){
        DisplayingPopup()
         document.getElementById("text").innerHTML=`Book with this name not exists`
+        addEventOnEnter()
         return;
     }
 
@@ -45,6 +55,7 @@ for(var z=0;z<allBooks.length;z++){
             {     
                 DisplayingPopup()
                 document.getElementById("text").innerHTML="This book is not available at that time. Please request later."
+                addEventOnEnter()
                 return;
             }
         }
@@ -54,6 +65,7 @@ for(var z=0;z<allBooks.length;z++){
            && document.getElementById("bookName").value.toLowerCase()===Requests[a].bookName.toLowerCase()){
             DisplayingPopup()
             document.getElementById("text").innerHTML="Your request for this book already exists."
+            addEventOnEnter()
             return;
            }
       }
@@ -69,10 +81,12 @@ for(var z=0;z<allBooks.length;z++){
           localStorage.setItem("Requests",JSON.stringify(Requests))
           DisplayingPopup()
           document.getElementById("text").innerHTML="Your request is submitted."
+          addEventOnEnter()
     }
     else{                       
         DisplayingPopup()
         document.getElementById("text").innerHTML="You can get book for maximum 7 days."
+        addEventOnEnter()
     }
 }
 yes=()=>{

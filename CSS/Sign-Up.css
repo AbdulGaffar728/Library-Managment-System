@@ -30,7 +30,7 @@ body{
 [type="submit"]{
     color:white;
     padding: 9px 10px;
-    box-shadow: 0px 0px 6px rgba(112, 24, 24, 0.507);
+    box-shadow: 0px 0px 6px rgba(2, 2, 2, 0.507);
     border: none;
     background-color: blue;
 }
