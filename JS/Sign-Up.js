@@ -9,9 +9,6 @@ addEventOnEnter=()=>{
     })
   }
 }
-if(loggedInUser!==null){
-  window.location.href="index.html"
-}
 checkingRole=()=>{
 if(loggedInUser===null){
     document.getElementById("Role").value="user"

@@ -17,12 +17,11 @@ setInterval(TimeUpdater,1000);
         var DateNow=timeNow.getDate();
         var MonthsArray=["January","February","March","April","May","June","July","August","September","October","November","December"]
         var DaysArray=["Sun","Mon","Tues","Wednes","Thurs","Fri","Satur"]
-        if(HoursNow<12 || HoursNow>23 ){
-            
+        if(HoursNow<=12 || HoursNow>23 ){       
             document.getElementById("AM").innerHTML=" AM";
             document.getElementById("Hour").innerHTML=("0"+ HoursNow).slice(-2)
         }
-        else if(HoursNow>=12){
+        else if(HoursNow>12){
             document.getElementById("AM").innerHTML=" PM";
             var timeManager=HoursNow-12
             document.getElementById("Hour").innerHTML=("0"+timeManager).slice(-2)
@@ -58,7 +57,7 @@ setInterval(TimeUpdater,1000);
     else{
         document.getElementById("Requests").innerText+=checkingRequests.length;
     }
-    }
+}
 
     addEventOnEnter=()=>{
         if(document.getElementById("Popup").style.display==="block"){
@@ -161,8 +160,8 @@ setInterval(TimeUpdater,1000);
            }
            else{
                for(var d=0;d<usersData.length;d++){
-                   if(usersData.Role==="user"){
-                       usersData.splice(d,1)
+                   if(usersData[d].Role==="user"){
+                       usersData[d].splice(d,1)
                    }
                    if(usersData.length===(d+1)){
                        localStorage.setItem("usersDetail",JSON.stringify(usersData))

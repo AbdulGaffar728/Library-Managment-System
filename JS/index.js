@@ -36,8 +36,8 @@ loggingIn=()=>{
     }
     else{
     for(var i=0; i<GettingData.length;i++){
-        if(userEmail === GettingData[i].Email){
-            if(password === GettingData[i].Password){
+        if(userEmail===GettingData[i].Email){
+            if(password===GettingData[i].Password){
                 if(GettingData[i].Role==="admin"){
                 window.location.href="Admin Site.html"
                 }
