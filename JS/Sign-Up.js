@@ -37,6 +37,7 @@ function SigningUp(){
         document.getElementById("yes").innerHTML="OK"
         document.getElementById("buttons").style.marginTop="10px"
         document.getElementById("yes").style.backgroundColor="black"
+        addEventOnEnter()
       }
       if(password.length>5 && password.length<15){
         if(password===confirmPassword){
@@ -54,7 +55,6 @@ function SigningUp(){
                    if(localData[a].Email===userEmail){
                        DisplayingPopup()
                        document.getElementById("text").innerHTML="Account with this email exists."
-                       addEventOnEnter()
                        return;
                    }
                 }
@@ -64,23 +64,20 @@ function SigningUp(){
               if(role==="admin"){
                  DisplayingPopup()
                  document.getElementById("text").innerHTML="Admin added successfully."
-                 addEventOnEnter()
               }
               else{
                  DisplayingPopup()
                  document.getElementById("text").innerHTML="Signed-Up successfully."
-              }
+                }
         }
         else{
             DisplayingPopup()
             document.getElementById("text").innerHTML="Both passwords are not same."
-            addEventOnEnter()
         }
      }
      else{
         DisplayingPopup()
         document.getElementById("text").innerHTML="Password must contain at least 6 characters and maximum 15 characters."
-        addEventOnEnter()
      }
   }
   // Popup functions

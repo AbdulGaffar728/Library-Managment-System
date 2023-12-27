@@ -11,12 +11,15 @@ storeAndReset=()=>{
 }
 //works on submit form
 var allBooksData=JSON.parse(localStorage.getItem("BooksData"))
-if(allBooksData===null){
-    allBooksData=[]
-}
+
 searched=()=>{
-    if(allBooksData.length===0){
+    if(allBooksData===null){
         document.getElementById("noDataFound").style.display="block"
+        noDataFoundCloser=setInterval(closingNoDataFound,10000)
+    }
+    else if(allBooksData.length===0){
+        document.getElementById("noDataFound").style.display="block"
+        noDataFoundCloser=setInterval(closingNoDataFound,10000)  
     }
     else{
      for(var i=0;i<allBooksData.length;i++){

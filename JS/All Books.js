@@ -4,13 +4,23 @@ var issuedBooks=JSON.parse(localStorage.getItem("acceptedRequests"));
     if(issuedBooks===null){
         issuedBooks=[]
     }
+    addEventOnEnter=()=>{
+        if(document.getElementById("Popup").style.display==="block"){
+          document.addEventListener("keydown",function(event){
+            if(event.key==="Enter"){
+              yes()
+            }
+          })
+        }
+      }
     DisplayingPopup=()=>{
         document.getElementById("Popup").style.display="block"
         document.getElementById("no").style.display="none"
         document.getElementById("yes").innerHTML="OK"
         document.getElementById("buttons").style.marginTop="10px"
         document.getElementById("yes").style.backgroundColor="blue"
-      }
+        addEventOnEnter()  
+    }
 var bookName,indexAtBookIs,indexAtBookIsInIssedBooks,editButton,selectButton,selection,author,category,price,creatingRow,words,bookNameInCamelCase,authorNameInCamelCase,bookCategoryInCamelCase;
         if(allBooksData===null || allBooksData.length===0){  
             creatingRow=document.createElement("tr") 
@@ -99,7 +109,7 @@ var bookName,indexAtBookIs,indexAtBookIsInIssedBooks,editButton,selectButton,sel
                 for(var c=0;c<allBooksData.length;c++){
                   if((parentElement.childNodes[0].innerHTML).toLowerCase()===allBooksData[c].bookName.toLowerCase())
                   { 
-                    bookToEdit=(allBooksData[c].bookName).toLowerCase;
+                    bookToEdit=(allBooksData[c].bookName);
                     document.getElementById("editing").style.display="flex"
                     document.getElementById("book").value=caseConverter(allBooksData[c].bookName)
                     document.getElementById("author").value=caseConverter(allBooksData[c].authorName)
@@ -115,7 +125,7 @@ var bookName,indexAtBookIs,indexAtBookIsInIssedBooks,editButton,selectButton,sel
                 for(var z=0;z<allBooksData.length;z++){
                     //check if book name already exist or not.If book name is not changed than following condition not executes
                     if(allBooksData[z].bookName===(document.getElementById("book").value).toLowerCase()
-                    && bookToEdit!==(document.getElementById("book").value).toLowerCase()){
+                    && bookToEdit.toLowerCase()!==(document.getElementById("book").value).toLowerCase()){
                           document.getElementById("Popup").style.display="block"
                           document.getElementById("no").style.display="none"
                           document.getElementById("buttons").style.marginTop="10px"

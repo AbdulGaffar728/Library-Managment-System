@@ -133,6 +133,9 @@ setInterval(TimeUpdater,1000);
             localStorage.removeItem("loggedInUser")
             window.location.href="index.html"
         }
+        else if(document.getElementById("text").innerHTML==="All data deleted successfully."){
+            location.reload();
+        }
         else{
             no();//Close popup on ok
         } 
@@ -159,14 +162,19 @@ setInterval(TimeUpdater,1000);
                usersData=[]
            }
            else{
-               for(var d=0;d<usersData.length;d++){
-                   if(usersData[d].Role==="user"){
-                       usersData[d].splice(d,1)
+               for(var v=0;v<usersData.length;v++){
+                   if(usersData[v].Role==="user"){
+                       usersData.splice(v,1)
+                       v=0;
                    }
-                   if(usersData.length===(d+1)){
+                   if(usersData.length===v+1){
                        localStorage.setItem("usersDetail",JSON.stringify(usersData))
                        document.getElementById("deleteAllData").style.display="none"
-                       location.reload()
+                       document.getElementById("Popup").style.display="block"
+                       document.getElementById("text").innerHTML="All data deleted successfully."
+                       document.getElementById("yes").innerHTML="OK"
+                       document.getElementById("no").style.display="none"
+                       addEventOnEnter()
                    }
                }
            }
