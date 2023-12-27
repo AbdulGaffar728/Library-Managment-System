@@ -60,8 +60,9 @@ for(var i=0;i<localStorageData.length;i++){
 }
 }
 }
-var returnBookRequests,bookReturnAcceptedRequests,responseOnReturn,idOfClickedButton,parentElement
+var returnBookRequests,bookReturnAcceptedRequests,issuedBooks,responseOnReturn,idOfClickedButton,parentElement
 ReturningBook=()=>{
+    issuedBooks=JSON.parse(localStorage.getItem("acceptedRequests"))
     bookReturnAcceptedRequests=JSON.parse(localStorage.getItem("bookReturnAcceptedRequests"))
     returnBookRequests=JSON.parse(localStorage.getItem("returnRequests"))
    if(bookReturnAcceptedRequests===null){
@@ -70,33 +71,40 @@ ReturningBook=()=>{
    if(returnBookRequests===null){
     returnBookRequests=[];
    }
+   if(issuedBooks===null){
+     issuedBooks=[]
+   }
    idOfClickedButton=event.target.parentNode.parentNode.id;
    parentElement=document.getElementById(idOfClickedButton)
    for(var a=0;a<returnBookRequests.length;a++){
-       if(returnBookRequests[a].bookName.toLowerCase()===parentElement.childNodes[0].innerHTML.toLowerCase()
-        && returnBookRequests[a].userName.toLowerCase()===parentElement.childNodes[1].innerHTML.toLowerCase()
-        && returnBookRequests[a].userEmail===parentElement.childNodes[2].innerHTML){
-            var timeNow=new Date();
-            var returnDate=`${timeNow.getDate()}-${Number(timeNow.getMonth())+1}-${timeNow.getFullYear()}`
-            responseOnReturn={
-          userEmail:parentElement.childNodes[2].innerHTML,
-          returnDate:returnDate,
-          bookName:parentElement.childNodes[0].innerHTML
+       if(returnBookRequests[a].bookName.toLowerCase()===parentElement.childNodes[0].innerHTML.toLowerCase()){
+         for(var b=0;b<issuedBooks.length;b++){
+           if(returnBookRequests[a].bookName.toLowerCase()===issuedBooks[b].bookName.toLowerCase()){
+           var timeNow=new Date();
+           var returnDate=`${timeNow.getDate()}-${Number(timeNow.getMonth())+1}-${timeNow.getFullYear()}`
+              responseOnReturn={
+            userEmail:parentElement.childNodes[2].innerHTML,
+            returnDate:returnDate,
+            bookName:parentElement.childNodes[0].innerHTML
+          }
+          bookReturnAcceptedRequests.push(responseOnReturn)
+          returnBookRequests.splice(a,1)
+          issuedBooks.splice(b,1)
+          localStorage.setItem("acceptedRequests",JSON.stringify(issuedBooks))
+          localStorage.setItem("returnRequests",JSON.stringify(returnBookRequests))
+          localStorage.setItem("bookReturnAcceptedRequests",JSON.stringify(bookReturnAcceptedRequests))
+          DisplayingPopup()
+          document.getElementById("text").innerHTML="Book returned successfully."
+          addEventOnEnter()
+          return;
         }
-        bookReturnAcceptedRequests.push(responseOnReturn)
-        returnBookRequests.splice(a,1)
-        localStorage.setItem("returnRequests",JSON.stringify(returnBookRequests))
-        localStorage.setItem("bookReturnAcceptedRequests",JSON.stringify(bookReturnAcceptedRequests))
-        DisplayingPopup()
-        document.getElementById("text").innerHTML="Book returned successfully."
-        addEventOnEnter()
-        return;
-       }
-       if(a===returnBookRequests.length-1){
+      }
+    }
+   if(a===returnBookRequests.length-1){
         DisplayingPopup()
         document.getElementById("text").innerHTML="No data match.";
         addEventOnEnter()   
-       }
+      }
    }
 }
 yes=()=>{

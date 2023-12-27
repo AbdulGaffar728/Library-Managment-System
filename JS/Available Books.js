@@ -6,10 +6,9 @@ Back=()=>{
     var allBooksData=JSON.parse(localStorage.getItem("BooksData"))
     var idOfClickedButton=event.target.parentNode.parentNode.id;
                 var parentElement=document.getElementById(idOfClickedButton)
+                var book=parentElement.childNodes[0].innerHTML
                 for(var g=0;g<allBooksData.length;g++){
-                    if((parentElement.childNodes[0].innerHTML).toLowerCase()===allBooksData[g].bookName
-                    && (parentElement.childNodes[1].innerHTML).toLowerCase()===allBooksData[g].authorName
-                    && (parentElement.childNodes[2].innerHTML).toLowerCase()===allBooksData[g].bookCategory)
+                    if(book.toLowerCase()===allBooksData[g].bookName)
                     { 
                             localStorage.setItem("bookName",parentElement.childNodes[0].innerHTML)
                             window.location.href="Send Request.html"

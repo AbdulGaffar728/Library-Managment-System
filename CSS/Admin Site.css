@@ -248,7 +248,7 @@ summary{
           top: 7.5%;
       }
       #responseData{
-        height: 180px;
+        height: 190px;
       }
       #welcome{
           display:none;
@@ -305,7 +305,7 @@ summary{
             top: 5.5%;
         }
         #responseData{
-            height: 170px;
+            height: 200px;
         }
         i{
             font-size: larger;

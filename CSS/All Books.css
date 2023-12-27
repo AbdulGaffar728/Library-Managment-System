@@ -65,6 +65,7 @@ a{
 #goBack{
     background-color: blue;
     padding: 10px;
+    text-align: center;
     width: max-content;
     border-radius: 5px;
     color: white;

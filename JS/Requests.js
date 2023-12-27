@@ -34,8 +34,8 @@ checkingRequests=()=>{
           declineButton=document.createElement("button");
           acceptButton.innerHTML="Accept";
           declineButton.innerHTML="Decline";
-          acceptButton.className="accept";
-          declineButton.className="decline";
+          acceptButton.className="request";
+          declineButton.className="delete";
           confirmationBox.className="confirmationBox"
           acceptButton.id="acceptButton"+i
           declineButton.id="declineButton"+i
