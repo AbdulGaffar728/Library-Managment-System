@@ -61,7 +61,7 @@ if(givenBooksData===null || allBooksData===null || givenBooksData.length===0 || 
              bookName.innerHTML=bookNameInCamelCase;
              userName.innerHTML=userNameInCamelCase;
              userEmail.innerHTML=givenBooksData[z].userEmail;
-             issuedDate.innerHTML=`${givenBooksData[z].givenDate}-${givenBooksData[z].givenMonth}-${givenBooksData[z].givenYear}`
+             issuedDate.innerHTML=`${givenBooksData[z].givenDate}-${givenBooksData[z].givenMonth+1}-${givenBooksData[z].givenYear}`
              bookReturnDate.innerHTML=`${returnDate}-${returnMonth+1}-${returnYear}`;
              FineBox.innerHTML=fine
              bookPrice.innerHTML=allBooksData[i].bookPrice;
